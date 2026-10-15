@@ -1,0 +1,4 @@
+-keep class org.libsdl.app.** { *; }
+-keep class org.play_retro.frontend.MainActivity { *; }
+-keep class org.play_retro.frontend.MainActivity$Companion { *; }
+-keep class org.play_retro.frontend.NativeBridge { *; }

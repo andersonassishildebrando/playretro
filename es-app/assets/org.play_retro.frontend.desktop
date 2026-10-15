@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Exec=playretro
+Icon=org.play_retro.frontend
+Terminal=false
+Type=Application
+StartupNotify=true
+Hidden=false
+Categories=Game;Emulator;
+Name=PlayRetro
+GenericName=Gaming Frontend
+Keywords=emulator;emulation;front-end;frontend;

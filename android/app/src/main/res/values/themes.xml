@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The main activity renders everything with SDL/OpenGL; keep the window chrome minimal. -->
+    <style name="Theme.PlayRetro" parent="android:Theme.Material.NoActionBar.Fullscreen">
+        <item name="android:windowBackground">@color/playretro_background</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+    </style>
+
+    <style name="Theme.PlayRetro.Onboarding" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/playretro_background</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+</resources>

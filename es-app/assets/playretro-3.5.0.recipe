@@ -1,0 +1,94 @@
+SUMMARY="Gaming frontend for your multi-platform collection"
+DESCRIPTION="PlayRetro (Play Retro) is a frontend for browsing and launching games from your \
+multi-platform collection. It comes preconfigured for use with a large selection \
+of emulators and game engines."
+HOMEPAGE="https://github.com/andersonassishildebrando/playretro"
+COPYRIGHT="2024-2026 Northwestern Software AB"
+LICENSE="MIT"
+REVISION="1"
+srcGitRev="50e4b600ae533d772bae3ff880d11a09b05dbe84"
+SOURCE_URI="https://github.com/andersonassishildebrando/playretro/archive/$srcGitRev/playretro-$srcGitRev.tar.gz"
+CHECKSUM_SHA256="75e345a9ee51b5906322e3a24ead70def1b5a03a0c0bfbe01ba2f5768845081f"
+SOURCE_FILENAME="playretro-$portVersion-$srcGitRev.tar.gz"
+SOURCE_DIR="playretro-$srcGitRev"
+ADDITIONAL_FILES="playretro.rdef.in"
+
+ARCHITECTURES="all !x86_gcc2"
+SECONDARY_ARCHITECTURES="x86"
+
+PROVIDES="
+	play_retro$secondaryArchSuffix = $portVersion
+	app:play_retro = $portVersion
+	"
+
+REQUIRES="
+	haiku$secondaryArchSuffix
+	lib:libGL$secondaryArchSuffix
+	lib:libavcodec$secondaryArchSuffix
+	lib:libavformat$secondaryArchSuffix
+	lib:libavutil$secondaryArchSuffix
+	lib:libcurl$secondaryArchSuffix
+	lib:libfreeimage$secondaryArchSuffix
+	lib:libfreetype$secondaryArchSuffix
+	lib:libharfbuzz$secondaryArchSuffix
+	lib:libgit2$secondaryArchSuffix
+	lib:libicuuc$secondaryArchSuffix
+	lib:libintl$secondaryArchSuffix
+	lib:libpoppler$secondaryArchSuffix
+	lib:libpugixml$secondaryArchSuffix
+	lib:libSDL2_2.0$secondaryArchSuffix
+	"
+
+BUILD_REQUIRES="
+	haiku${secondaryArchSuffix}_devel
+	devel:libGL$secondaryArchSuffix
+	devel:libavcodec$secondaryArchSuffix >= 60
+	devel:libavformat$secondaryArchSuffix >= 60
+	devel:libavutil$secondaryArchSuffix >= 58
+	devel:libcurl$secondaryArchSuffix
+	devel:libfreeimage$secondaryArchSuffix
+	devel:libfreetype$secondaryArchSuffix
+	devel:libharfbuzz$secondaryArchSuffix
+	devel:libgit2$secondaryArchSuffix >= 1.9
+	devel:libicuuc$secondaryArchSuffix >= 74
+	devel:libintl$secondaryArchSuffix
+	devel:libpoppler$secondaryArchSuffix >= 155
+	devel:libpugixml$secondaryArchSuffix
+	devel:libSDL2_2.0$secondaryArchSuffix
+	"
+
+BUILD_PREREQUIRES="
+	cmd:cmake
+	cmd:g++$secondaryArchSuffix
+	cmd:ld$secondaryArchSuffix
+	cmd:make
+	cmd:msgfmt$secondaryArchSuffix
+	cmd:pkg_config$secondaryArchSuffix
+	"
+
+BUILD()
+{
+	cmake -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_BUILD_TYPE=Release .
+	make $jobArgs
+}
+
+INSTALL()
+{
+	make install
+
+	local APP_SIGNATURE="application/x-vnd.PlayRetro"
+	local MAJOR="`echo "$portVersion" | cut -d. -f1`"
+	local MIDDLE="`echo "$portVersion" | cut -d. -f2`"
+	local MINOR="`echo "$portVersion" | cut -d. -f3`"
+	sed \
+		-e "s|@APP_SIGNATURE@|$APP_SIGNATURE|" \
+		-e "s|@MAJOR@|$MAJOR|" \
+		-e "s|@MIDDLE@|$MIDDLE|" \
+		-e "s|@MINOR@|$MINOR|" \
+		$portDir/additional-files/playretro.rdef.in > playretro.rdef
+
+	addResourcesToBinaries playretro.rdef \
+		"$appsDir"/playretro
+
+	addAppDeskbarSymlink "$appsDir"/playretro "PlayRetro"
+}

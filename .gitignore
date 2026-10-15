@@ -1,0 +1,131 @@
+# Object files
+*.o
+*.lo
+*.mo
+*.slo
+
+# Shared libraries
+*.so
+*.dylib
+*.[dD][lL][lL]
+
+# Static libraries
+*.a
+*.la
+*.lai
+*.lib
+
+# Dependency makefiles
+*.d
+
+# Compiled executable
+/playretro
+/Play Retro
+/PlayRetro.exe
+/es-pdf-convert
+/es-pdf-converter/es-pdf-convert.exe
+
+# Emscripten build
+playretro.data
+playretro.html
+playretro.js
+playretro.wasm
+playretro.worker.js
+/index.html
+/ROMs
+
+# Android (PlayRetro keeps its Android sources in the repository; only build outputs are ignored)
+/android/prefix
+/android/libs
+/android_*
+/logback.log
+.gradle
+local.properties
+*.apk
+*.aab
+*.jks
+*.keystore
+
+# iOS
+ios/
+Frameworks/
+CMakeScripts
+*.xcodeproj/
+playretro.xcarchive/
+es-app/src/UIKitMain.cpp
+es-core/src/utils/PlatformUtilIOS.*
+
+# AppImage
+AppDir
+*.AppImage
+
+# Core dumps
+playretro.core
+
+# Profiling data
+callgrind.out.*
+gmon.out
+
+# Patch/diff files
+*.patch
+
+# Build directories
+build
+Debug
+Release
+MinSizeRel
+RelWithDebInfo
+
+# CMake
+CMakeCache.txt
+CMakeFiles
+cmake_install.cmake
+Makefile
+install_manifest.txt
+PlayRetro.exe.manifest
+
+# CPack
+_CPack_Packages
+playretro*.deb
+playretro*.rpm
+Play Retro*.dmg
+Play Retro*.exe
+
+# macOS
+.DS_Store
+
+# MSVC
+PlayRetro.ilk
+PlayRetro.pdb
+es-pdf-convert.ilk
+es-pdf-convert.pdb
+lunasvg.exp
+lunasvg.ilk
+lunasvg.pdb
+plutovg.exp
+plutovg.ilk
+plutovg.pdb
+rlottie.exp
+rlottie.ilk
+rlottie.pdb
+
+# Jom
+*.vcxproj
+*.vcxproj.filters
+*.sln
+*.manifest
+
+# Eclipse
+.cproject
+.project
+.settings/
+
+# CLion
+.idea/
+CPackConfig.cmake
+CPackSourceConfig.cmake
+*.cbp
+
+# VSCode
+.vscode/
+.continueignore

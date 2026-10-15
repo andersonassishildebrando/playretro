@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+    <id>org.play_retro.frontend</id>
+    <name>Play Retro</name>
+    <summary>Gaming frontend</summary>
+    <description>
+        <p>Play Retro is a frontend for browsing and launching games from your
+            multi-platform collection.</p>
+    </description>
+    <launchable type="desktop-id">org.play_retro.frontend.desktop</launchable>
+    <categories>
+        <category>Game</category>
+        <category>Emulator</category>
+    </categories>
+    <developer id="io.github.andersonassishildebrando">
+        <name>Northwestern Software AB</name>
+    </developer>
+    <content_rating type="oars-1.0" />
+    <metadata_license>CC0-1.0</metadata_license>
+    <project_license>MIT</project_license>
+    <url type="homepage">https://github.com/andersonassishildebrando/playretro</url>
+    <url type="bugtracker">https://github.com/andersonassishildebrando/playretro/issues</url>
+    <url type="help">https://github.com/andersonassishildebrando/playretro</url>
+    <url type="donation">https://github.com/andersonassishildebrando/playretro</url>
+    <releases>
+        <release version="3.5.0" date="2026-09-30">
+            <url>https://github.com/andersonassishildebrando/playretro/releases</url>
+        </release>
+        <release version="3.4.1" date="2026-04-10">
+            <url>https://github.com/andersonassishildebrando/playretro/releases</url>
+        </release>
+        <release version="3.4.0" date="2025-11-07">
+            <url>https://github.com/andersonassishildebrando/playretro/releases</url>
+        </release>
+        <release version="3.3.0" date="2025-07-15">
+            <url>https://github.com/andersonassishildebrando/playretro/releases</url>
+        </release>
+        <release version="3.2.0" date="2025-04-04">
+            <url>https://github.com/andersonassishildebrando/playretro/releases</url>
+        </release>
+        <release version="3.1.1" date="2024-12-13">
+            <url>https://github.com/andersonassishildebrando/playretro/releases</url>
+        </release>
+        <release version="3.1.0" date="2024-09-13">
+            <url>https://github.com/andersonassishildebrando/playretro/releases</url>
+        </release>
+        <release version="3.0.3" date="2024-06-14">
+            <url>https://github.com/andersonassishildebrando/playretro/releases</url>
+        </release>
+        <release version="3.0.2" date="2024-05-13">
+            <url>https://github.com/andersonassishildebrando/playretro/releases</url>
+        </release>
+        <release version="3.0.1" date="2024-03-16">
+            <url>https://github.com/andersonassishildebrando/playretro/releases</url>
+        </release>
+        <release version="3.0.0" date="2024-02-17">
+            <url>https://github.com/andersonassishildebrando/playretro/releases</url>
+        </release>
+        <release version="2.2.1" date="2023-11-12">
+            <url>https://github.com/andersonassishildebrando/playretro/releases</url>
+        </release>
+        <release version="2.2.0" date="2023-11-02">
+            <url>https://github.com/andersonassishildebrando/playretro/releases</url>
+        </release>
+        <release version="2.1.1" date="2023-07-16">
+            <url>https://github.com/andersonassishildebrando/playretro/releases</url>
+        </release>
+        <release version="2.1.0" date="2023-07-13">
+            <url>https://github.com/andersonassishildebrando/playretro/releases</url>
+        </release>
+        <release version="2.0.1" date="2023-04-23">
+            <url>https://github.com/andersonassishildebrando/playretro/releases</url>
+        </release>
+        <release version="2.0.0" date="2023-03-11">
+            <url>https://github.com/andersonassishildebrando/playretro/releases</url>
+        </release>
+        <release version="1.2.6" date="2022-08-03">
+            <url>https://github.com/andersonassishildebrando/playretro/releases</url>
+        </release>
+        <release version="1.2.5" date="2022-06-22">
+            <url>https://github.com/andersonassishildebrando/playretro/releases</url>
+        </release>
+        <release version="1.2.4" date="2022-05-27">
+            <url>https://github.com/andersonassishildebrando/playretro/releases</url>
+        </release>
+        <release version="1.2.3" date="2022-05-04">
+            <url>https://github.com/andersonassishildebrando/playretro/releases</url>
+        </release>
+        <release version="1.2.2" date="2022-04-07">
+            <url>https://github.com/andersonassishildebrando/playretro/releases</url>
+        </release>
+        <release version="1.2.1" date="2022-03-30">
+            <url>https://github.com/andersonassishildebrando/playretro/releases</url>
+        </release>
+        <release version="1.2.0" date="2021-12-28">
+            <url>https://github.com/andersonassishildebrando/playretro/releases</url>
+        </release>
+        <release version="1.1.0" date="2021-08-10">
+            <url>https://github.com/andersonassishildebrando/playretro/releases</url>
+        </release>
+        <release version="1.0.1" date="2021-05-01">
+            <url>https://github.com/andersonassishildebrando/playretro/releases</url>
+        </release>
+    </releases>
+</component>
