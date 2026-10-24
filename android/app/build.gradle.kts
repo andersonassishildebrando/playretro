@@ -6,8 +6,8 @@ plugins {
 // The C++ application, resources and bundled theme live at the repository root.
 val repoRoot = rootProject.projectDir.parentFile
 val bundledTheme = "linear"
-val playRetroVersionCode = 1
-val playRetroVersionName = "0.1.0"
+val playRetroVersionCode = 5
+val playRetroVersionName = "0.1.5"
 
 android {
     namespace = "org.play_retro.frontend"
