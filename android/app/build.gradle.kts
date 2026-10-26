@@ -6,8 +6,8 @@ plugins {
 // The C++ application, resources and bundled theme live at the repository root.
 val repoRoot = rootProject.projectDir.parentFile
 val bundledTheme = "linear"
-val playRetroVersionCode = 5
-val playRetroVersionName = "0.1.5"
+val playRetroVersionCode = 6
+val playRetroVersionName = "0.1.0-beta"
 
 android {
     namespace = "org.play_retro.frontend"
@@ -66,8 +66,25 @@ android {
         }
     }
 
+    // The release key lives outside the repository; its location and passwords come from local,
+    // untracked Gradle properties (e.g. ~/.gradle/gradle.properties). Without them the release
+    // APK is left unsigned.
+    val signingProps = listOf("storeFile", "storePassword", "keyAlias", "keyPassword")
+        .associateWith { project.findProperty("playretro.signing.$it") as String? }
+    if (signingProps.values.all { it != null }) {
+        signingConfigs {
+            create("release") {
+                storeFile = file(signingProps.getValue("storeFile")!!)
+                storePassword = signingProps.getValue("storePassword")
+                keyAlias = signingProps.getValue("keyAlias")
+                keyPassword = signingProps.getValue("keyPassword")
+            }
+        }
+    }
+
     buildTypes {
         release {
+            signingConfigs.findByName("release")?.let { signingConfig = it }
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
