@@ -210,6 +210,43 @@ void GuiScraperMenu::openAccountOptions()
         }
     });
 
+    // ScreenScraper developer ID, requested by each user at screenscraper.fr.
+    auto scraperDevIdScreenScraper = std::make_shared<TextComponent>(
+        "", Font::get(FONT_SIZE_MEDIUM), mMenuColorPrimary, ALIGN_RIGHT);
+    s->addEditableTextComponent(_("SCREENSCRAPER DEVELOPER ID"), scraperDevIdScreenScraper,
+                                Settings::getInstance()->getString("ScraperDevIdScreenScraper"));
+    scraperDevIdScreenScraper->setSize(0.0f, scraperDevIdScreenScraper->getFont()->getHeight());
+    s->addSaveFunc([scraperDevIdScreenScraper, s] {
+        if (scraperDevIdScreenScraper->getValue() !=
+            Settings::getInstance()->getString("ScraperDevIdScreenScraper")) {
+            Settings::getInstance()->setString("ScraperDevIdScreenScraper",
+                                               scraperDevIdScreenScraper->getValue());
+            s->setNeedsSaving();
+        }
+    });
+
+    // ScreenScraper developer password.
+    auto scraperDevPasswordScreenScraper = std::make_shared<TextComponent>(
+        "", Font::get(FONT_SIZE_MEDIUM), mMenuColorPrimary, ALIGN_RIGHT);
+    std::string devPasswordMasked;
+    if (Settings::getInstance()->getString("ScraperDevPasswordScreenScraper") != "") {
+        devPasswordMasked = "********";
+        scraperDevPasswordScreenScraper->setHiddenValue(
+            Settings::getInstance()->getString("ScraperDevPasswordScreenScraper"));
+    }
+    s->addEditableTextComponent(_("SCREENSCRAPER DEVELOPER PASSWORD"),
+                                scraperDevPasswordScreenScraper, devPasswordMasked, "", true);
+    scraperDevPasswordScreenScraper->setSize(
+        0.0f, scraperDevPasswordScreenScraper->getFont()->getHeight());
+    s->addSaveFunc([scraperDevPasswordScreenScraper, s] {
+        if (scraperDevPasswordScreenScraper->getHiddenValue() !=
+            Settings::getInstance()->getString("ScraperDevPasswordScreenScraper")) {
+            Settings::getInstance()->setString("ScraperDevPasswordScreenScraper",
+                                               scraperDevPasswordScreenScraper->getHiddenValue());
+            s->setNeedsSaving();
+        }
+    });
+
     // Whether to use the ScreenScraper account when scraping.
     auto scraperUseAccountScreenScraper = std::make_shared<SwitchComponent>();
     scraperUseAccountScreenScraper->setState(
@@ -1303,6 +1340,14 @@ void GuiScraperMenu::start()
 
     bool contentToScrape {false};
     std::string scraperService {Settings::getInstance()->getString("Scraper")};
+
+    if (scraperService == "screenscraper" &&
+        Settings::getInstance()->getString("ScraperDevIdScreenScraper").empty() &&
+        std::string(SCREENSCRAPER_DEV_ID).empty()) {
+        mWindow->pushGui(new GuiMsgBox(_("ENTER YOUR SCREENSCRAPER DEVELOPER ID AND PASSWORD IN "
+                                         "THE ACCOUNT SETTINGS BEFORE SCRAPING")));
+        return;
+    }
 
     if (scraperService == "thegamesdb" &&
         Settings::getInstance()->getString("ScraperApiKeyTheGamesDB").empty() &&

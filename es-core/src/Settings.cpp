@@ -107,6 +107,8 @@ void Settings::setDefaults()
     mStringMap["ScraperPasswordScreenScraper"] = {"", ""};
     mBoolMap["ScraperUseAccountScreenScraper"] = {true, true};
     mStringMap["ScraperApiKeyTheGamesDB"] = {"", ""};
+    mStringMap["ScraperDevIdScreenScraper"] = {"", ""};
+    mStringMap["ScraperDevPasswordScreenScraper"] = {"", ""};
 
     mBoolMap["ScrapeGameNames"] = {true, true};
     mBoolMap["ScrapeRatings"] = {true, true};

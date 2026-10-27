@@ -280,6 +280,14 @@ void ScreenScraperRequest::process(const std::unique_ptr<HttpReq>& req,
     if (req->getContent().find("Erreur : Rom") == 0)
         return;
 
+    // Wrong or missing developer credentials are reported as plain text too.
+    if (req->getContent().find("Erreur de login") == 0) {
+        setError(_("ScreenScraper: Wrong developer ID or password, check them in the scraper "
+                   "account settings"),
+                 false, true);
+        return;
+    }
+
     pugi::xml_parse_result parseResult {doc.load_string(req->getContent().c_str())};
 
     if (!parseResult) {
@@ -774,6 +782,19 @@ int ScreenScraperRequest::processMedia(ScraperSearchResult& result,
     return regionPos;
 }
 
+std::string ScreenScraperRequest::ScreenScraperConfig::getDevId() const
+{
+    const std::string& userDevId {Settings::getInstance()->getString("ScraperDevIdScreenScraper")};
+    return userDevId.empty() ? SCREENSCRAPER_DEV_ID : userDevId;
+}
+
+std::string ScreenScraperRequest::ScreenScraperConfig::getDevPassword() const
+{
+    const std::string& userDevPassword {
+        Settings::getInstance()->getString("ScraperDevPasswordScreenScraper")};
+    return userDevPassword.empty() ? SCREENSCRAPER_DEV_PASSWORD : userDevPassword;
+}
+
 std::string ScreenScraperRequest::ScreenScraperConfig::getGameSearchUrl(const std::string& gameName,
                                                                         const std::string& md5Hash,
                                                                         const long fileSize) const
@@ -861,9 +882,9 @@ std::string ScreenScraperRequest::ScreenScraperConfig::getGameSearchUrl(const st
             searchName = Utils::String::replace(searchName, ".", "");
         screenScraperURL.append(API_URL_BASE)
             .append("/jeuInfos.php?devid=")
-            .append(HttpReq::urlEncode(API_DEV_U))
+            .append(HttpReq::urlEncode(getDevId()))
             .append("&devpassword=")
-            .append(HttpReq::urlEncode(API_DEV_P))
+            .append(HttpReq::urlEncode(getDevPassword()))
             .append("&softname=")
             .append(HttpReq::urlEncode(API_SOFT_NAME))
             .append("&output=xml")
@@ -879,9 +900,9 @@ std::string ScreenScraperRequest::ScreenScraperConfig::getGameSearchUrl(const st
     else {
         screenScraperURL.append(API_URL_BASE)
             .append("/jeuRecherche.php?devid=")
-            .append(HttpReq::urlEncode(API_DEV_U))
+            .append(HttpReq::urlEncode(getDevId()))
             .append("&devpassword=")
-            .append(HttpReq::urlEncode(API_DEV_P))
+            .append(HttpReq::urlEncode(getDevPassword()))
             .append("&softname=")
             .append(HttpReq::urlEncode(API_SOFT_NAME))
             .append("&output=xml")

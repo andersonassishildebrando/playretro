@@ -47,8 +47,9 @@ public:
                                      const long fileSize) const;
 
         // Access to the API.
-        const std::string API_DEV_U {SCREENSCRAPER_DEV_ID};
-        const std::string API_DEV_P {SCREENSCRAPER_DEV_PASSWORD};
+        // Developer credentials entered by the user take precedence over build-time ones.
+        std::string getDevId() const;
+        std::string getDevPassword() const;
         const std::string API_URL_BASE {"https://api.screenscraper.fr/api2"};
         const std::string API_SOFT_NAME {APPLICATION_SCRAPER_SOFT_NAME " " +
                                          static_cast<std::string>(PROGRAM_VERSION_STRING) + " " +

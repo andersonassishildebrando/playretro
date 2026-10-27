@@ -3211,3 +3211,15 @@ msgstr "Nenhuma chave de API do TheGamesDB definida, informe a sua em Ajustes de
 
 msgid "TheGamesDB rejected the API key, check it in the scraper account settings"
 msgstr "O TheGamesDB recusou a chave de API, confira-a em Ajustes de conta do scraper"
+
+msgid "SCREENSCRAPER DEVELOPER ID"
+msgstr "ID DE DESENVOLVEDOR DO SCREENSCRAPER"
+
+msgid "SCREENSCRAPER DEVELOPER PASSWORD"
+msgstr "SENHA DE DESENVOLVEDOR DO SCREENSCRAPER"
+
+msgid "ENTER YOUR SCREENSCRAPER DEVELOPER ID AND PASSWORD IN THE ACCOUNT SETTINGS BEFORE SCRAPING"
+msgstr "INFORME SEU ID E SENHA DE DESENVOLVEDOR DO SCREENSCRAPER EM AJUSTES DE CONTA ANTES DE BUSCAR"
+
+msgid "ScreenScraper: Wrong developer ID or password, check them in the scraper account settings"
+msgstr "ScreenScraper: ID ou senha de desenvolvedor incorretos, confira-os em Ajustes de conta do scraper"
