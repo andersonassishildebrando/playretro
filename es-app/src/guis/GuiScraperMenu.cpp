@@ -1304,6 +1304,14 @@ void GuiScraperMenu::start()
     bool contentToScrape {false};
     std::string scraperService {Settings::getInstance()->getString("Scraper")};
 
+    if (scraperService == "thegamesdb" &&
+        Settings::getInstance()->getString("ScraperApiKeyTheGamesDB").empty() &&
+        std::string(THEGAMESDB_API_KEY).empty()) {
+        mWindow->pushGui(new GuiMsgBox(_("ENTER YOUR THEGAMESDB API KEY IN THE ACCOUNT SETTINGS "
+                                         "BEFORE SCRAPING")));
+        return;
+    }
+
     // Check if there is actually any type of content selected for scraping.
     do {
         if (Settings::getInstance()->getBool("ScrapeGameNames")) {

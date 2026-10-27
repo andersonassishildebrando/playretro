@@ -42,11 +42,13 @@ Controles físicos (Bluetooth ou USB) também funcionam.
 
 ## Versão beta
 
-Esta é a 0.1 beta. Problemas conhecidos:
+Esta é a 0.1.1 beta. Problemas conhecidos:
 
 - Não dá para saber de dentro do Play Retro se um core do RetroArch está instalado; se o jogo
   abrir numa tela preta, instale o core no RetroArch.
-- O scraper do ScreenScraper ainda não está habilitado nesta versão; use o TheGamesDB.
+- Para baixar capas e informações, entre com a sua conta do ScreenScraper (gratuita, em
+  screenscraper.fr) em **Scraper → Ajustes de conta**. Para usar o TheGamesDB, informe ali a sua
+  chave de API do TheGamesDB.
 - Ainda não há atualização automática: novas versões são publicadas nas releases do GitHub.
 
 ## Compilar

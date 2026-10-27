@@ -3199,3 +3199,15 @@ msgstr "Criando as pastas de sistemas..."
 
 msgid "ERROR: COULDN'T RENDER PDF FILE"
 msgstr "ERRO: FALHA AO RENDERIZAR O ARQUIVO PDF"
+
+msgid "THEGAMESDB API KEY"
+msgstr "CHAVE DE API DO THEGAMESDB"
+
+msgid "ENTER YOUR THEGAMESDB API KEY IN THE ACCOUNT SETTINGS BEFORE SCRAPING"
+msgstr "INFORME SUA CHAVE DE API DO THEGAMESDB EM AJUSTES DE CONTA ANTES DE BUSCAR"
+
+msgid "No TheGamesDB API key set, enter yours in the scraper account settings"
+msgstr "Nenhuma chave de API do TheGamesDB definida, informe a sua em Ajustes de conta do scraper"
+
+msgid "TheGamesDB rejected the API key, check it in the scraper account settings"
+msgstr "O TheGamesDB recusou a chave de API, confira-a em Ajustes de conta do scraper"

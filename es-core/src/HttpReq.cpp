@@ -428,6 +428,19 @@ void HttpReq::pollCurl()
                                  Settings::getInstance()->getBool("ScraperIgnoreHTTP404Errors")) {
                             req->mStatus = REQ_RESOURCE_NOT_FOUND;
                         }
+                        else if ((responseCode == 418 || responseCode == 403) &&
+                                 req->mScraperRequest &&
+                                 Settings::getInstance()->getString("Scraper") == "thegamesdb") {
+                            // TheGamesDB answers 418 when no API key is sent and 403 when the
+                            // key is invalid or out of monthly allowance.
+                            req->mStatus = REQ_BAD_STATUS_CODE;
+                            req->onError(
+                                responseCode == 418 ?
+                                    _("No TheGamesDB API key set, enter yours in the scraper "
+                                      "account settings") :
+                                    _("TheGamesDB rejected the API key, check it in the scraper "
+                                      "account settings"));
+                        }
                         else {
                             req->mStatus = REQ_BAD_STATUS_CODE;
                             req->onError(

@@ -6,8 +6,8 @@ plugins {
 // The C++ application, resources and bundled theme live at the repository root.
 val repoRoot = rootProject.projectDir.parentFile
 val bundledTheme = "linear"
-val playRetroVersionCode = 6
-val playRetroVersionName = "0.1.0-beta"
+val playRetroVersionCode = 7
+val playRetroVersionName = "0.1.1-beta"
 
 android {
     namespace = "org.play_retro.frontend"
@@ -35,7 +35,7 @@ android {
                 )
                 // Service credentials are read from local, untracked Gradle properties
                 // (e.g. ~/.gradle/gradle.properties); see PLAYRETRO.md.
-                listOf("SCREENSCRAPER_DEV_ID", "SCREENSCRAPER_DEV_PASSWORD").forEach { key ->
+                listOf("SCREENSCRAPER_DEV_ID", "SCREENSCRAPER_DEV_PASSWORD", "THEGAMESDB_API_KEY").forEach { key ->
                     (project.findProperty("playretro.$key") as String?)?.let {
                         arguments += "-D$key=$it"
                     }
